@@ -12,8 +12,16 @@ function _drawPosts() {
 export default class PostController {
   constructor() {
     AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, () => {
-      ProxyState.on("todos", _drawPosts);
+      ProxyState.on("posts", _drawPosts);
     })
+  }
+
+  getAllPosts() {
+    try {
+      postsService.getAllPosts();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   addPost(e) {

@@ -5,8 +5,7 @@ import { api } from "./AxiosService.js";
 let url = "api/posts/";
 
 class PostsService {
-
-  async getPosts() {
+  async getAllPosts() {
     let res = await api.get(url);
     ProxyState.posts = res.data.map((p) => new Post(p));
   }
@@ -19,7 +18,7 @@ class PostsService {
   async removePost(id) {
     let res = await api.delete(`/posts/${id}`);
     let index = ProxyState.posts.findIndex((p) => p.id == id)
-    if(index == -1) {
+    if (index == -1) {
       throw new Error("Invalid Id");
     }
     ProxyState.posts.splice(index, 1);
