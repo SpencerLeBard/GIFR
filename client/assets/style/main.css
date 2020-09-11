@@ -5,6 +5,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
   --blue: blue;
   --indigo: indigo;
@@ -41,6 +42,18 @@
 *::after {
   box-sizing: border-box;
 }
+
+
+.navbar-custom-header{
+  background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(253,45,45,1) 100%);
+}
+
+.navbar-custom-footer{
+  background: rgb(253,45,45);
+  background: linear-gradient(0deg, rgba(253,45,45,1) 0%, rgba(0,0,0,1) 100%);
+}
+
 
 html {
   font-family: sans-serif;
