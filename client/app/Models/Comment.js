@@ -8,8 +8,10 @@ export default class Comment {
   }
 
   get commentTemplate{
-    return `<div class="row">
-    <div class="col-12 card border-dark">yo</div>
-</div>`
+    return `
+    <div class="row">
+    <div class="col-12 card border-dark">${this.body}</div>
+  </div>
+  `
   }
 }

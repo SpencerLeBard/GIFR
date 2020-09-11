@@ -1,6 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { AuthService } from "../Services/AuthService.js";
-import { PostService } from "../Services/PostService.js";
+import { postsService } from "../Services/PostsService.js";
 
 //Private
 function _drawPosts() {
@@ -24,7 +24,7 @@ export default class PostController {
     };
     form.reset();
     try {
-      PostService.addPost(newPost);
+      postsService.addPost(newPost);
     } catch (error) {
       console.error(error);
     }
@@ -32,7 +32,7 @@ export default class PostController {
 
   removePost(id) {
     try {
-      PostService.removePost(id);
+      postsService.removePost(id);
     } catch (error) {
       console.error(error);
     }
