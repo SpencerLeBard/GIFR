@@ -1,3 +1,4 @@
+import Post from "./Models/Post.js"
 import Value from "./Models/Value.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
@@ -7,7 +8,12 @@ class AppState extends EventEmitter {
   profile = {}
   /** @type {Value[]} */
   values = []
+  /** @type {Post[]} */
+  posts = [new Post({ title: "Test", authorImg: "https://placehold.it/100x100", author: "testy testington", body: "Test", tags: "test", creatorEmail: "test@test.com", id: "123test" })]
+  comments = []
 }
+
+
 
 export const ProxyState = new Proxy(new AppState(), {
   get(target, prop) {
