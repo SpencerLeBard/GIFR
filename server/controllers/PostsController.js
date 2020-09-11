@@ -1,7 +1,7 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
-import { valuesService } from "../services/ValuesService";
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { postsService } from "../services/PostsService";
 
 export class PostsController extends BaseController {
     constructor() {
@@ -18,6 +18,7 @@ export class PostsController extends BaseController {
     async getAllPosts(req, res, next) {
         try {
             let posts = await postsService.getAllPosts(req.query)
+            res.send(posts)
         } catch (error) {
             next(error)
         }
@@ -25,7 +26,8 @@ export class PostsController extends BaseController {
 
     async getUserPosts(req, res, next) {
         try {
-
+            let posts = await postsService.getUserPosts(req.userInfo.email)
+            res.send(posts)
         } catch (error) {
             next(error)
         }
@@ -33,23 +35,28 @@ export class PostsController extends BaseController {
 
     async createPost(req, res, next) {
         try {
-
+            req.body.creatorEmail = req.userInfo.email
+            let posts = await postsService.createPost(req.body)
+            res.send(posts)
         } catch (error) {
             next(error)
         }
     }
 
-    async editPost() {
+    async editPost(req, res, next) {
         try {
-
+            req.body.creatorEmail = req.userInfo.email
+            let posts = await postsService.editPost(req.body)
+            res.send(posts)
         } catch (error) {
             next(error)
         }
     }
 
-    async deletePost() {
+    async deletePost(req, res, next) {
         try {
-
+            let deletedPost = await postsService.deletePost(req.params.id, req.userInfo.email)
+            res.send("Successfully deleted post")
         } catch (error) {
             next(error)
         }
