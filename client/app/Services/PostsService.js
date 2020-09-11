@@ -6,7 +6,6 @@ let url = "/posts/";
 
 class PostsService {
   async getAllPosts() {
-    debugger
     let res = await api.get(url);
     ProxyState.posts = res.data.map((p) => new Post(p));
     console.log(res);
