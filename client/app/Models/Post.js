@@ -26,7 +26,6 @@ export default class Post {
           ${this.body}
           </div>
       </div>
-      <!-- ${this.commentTemplate} -->*//
   </div>
 </div>`
   }
