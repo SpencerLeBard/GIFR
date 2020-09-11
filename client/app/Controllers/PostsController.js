@@ -11,6 +11,7 @@ function _drawPosts() {
 //Public
 export default class PostsController {
   constructor() {
+    this.getAllPosts()
     AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, () => {
       ProxyState.on("posts", _drawPosts);
     })
