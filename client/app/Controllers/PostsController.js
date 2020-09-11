@@ -9,7 +9,7 @@ function _drawPosts() {
   document.getElementById("posts").innerHTML = template;
 }
 //Public
-export default class PostController {
+export default class PostsController {
   constructor() {
     AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, () => {
       ProxyState.on("posts", _drawPosts);
