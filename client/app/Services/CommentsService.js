@@ -2,7 +2,7 @@ import { ProxyState } from "../AppState.js";
 import Comment from "../Models/Comment.js";
 import { api } from "./AxiosService.js";
 
-let url = "api/posts/comments";
+let url = "/comments";
 
 class CommentsService {
 
@@ -19,7 +19,7 @@ class CommentsService {
   async removeComment(id) {
     let res = await api.delete(`/comments/${id}`);
     let index = ProxyState.comments.findIndex((c) => c.id == id)
-    if(index == -1) {
+    if (index == -1) {
       throw new Error("Invalid Id");
     }
     ProxyState.comments.splice(index, 1);
