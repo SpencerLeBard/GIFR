@@ -1,29 +1,29 @@
-import express from "express";
 import BaseController from "../utils/BaseController";
-import { valuesService } from "../services/ValuesService";
+import { commentsService } from "../services/CommentsService";
 import { Auth0Provider } from "@bcwdev/auth0provider";
 
-export class ValuesController extends BaseController {
+export class CommentsController extends BaseController {
   constructor() {
-    super("api/values");
+    super("api/comments");
     this.router
-      .get("", this.getAll)
+      .get("", this.getAllComments)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post("", this.create);
   }
-  async getAll(req, res, next) {
+  async getAllComments(req, res, next) {
     try {
-      return res.send(["value1", "value2"]);
+      let comments = await commentsService.find(req.query)
+      res.send(comments)
     } catch (error) {
       next(error);
     }
   }
   async create(req, res, next) {
     try {
-      // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorEmail = req.userInfo.email;
-      res.send(req.body);
+      let comment = await commentsService.createComment(req.body)
+      res.send(comment);
     } catch (error) {
       next(error);
     }
