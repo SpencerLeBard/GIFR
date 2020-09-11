@@ -9,7 +9,7 @@ export class PostsController extends BaseController {
         this.router
             .get("", this.getAllPosts)
             .use(Auth0Provider.getAuthorizedUserInfo)
-            .get("", this.getUserPosts)
+            .get("/user", this.getUserPosts)
             .put("/:id", this.editPost)
             .post("", this.createPost)
             .delete("/:id", this.deletePost)
@@ -45,9 +45,10 @@ export class PostsController extends BaseController {
 
     async editPost(req, res, next) {
         try {
+            req.body.id = req.params.id
             req.body.creatorEmail = req.userInfo.email
-            let posts = await postsService.editPost(req.body)
-            res.send(posts)
+            let updatedPosts = await postsService.editPost(req.body)
+            res.send(updatedPosts)
         } catch (error) {
             next(error)
         }

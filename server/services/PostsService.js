@@ -2,7 +2,7 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
 class PostsService {
-  async  getAllPosts(query) {
+  async  getAllPosts(query = {}) {
     let posts = await dbContext.Posts.find(query)
     return posts
   }
@@ -18,7 +18,7 @@ class PostsService {
   }
   
   async editPost(body) {
-    let editedPost = await dbContext.Posts.findOneAndUpdate({id: body.id, creator: body.creatorEmail}, body, {new:true})
+    let editedPost = await dbContext.Posts.findOneAndUpdate({_id: body.id, creatorEmail: body.creatorEmail}, body, {new:true})
     if(!editedPost){
       throw new BadRequest("invalid id or not authorized")
     }
