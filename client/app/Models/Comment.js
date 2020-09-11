@@ -7,7 +7,7 @@ export default class Comment {
     this.vote = vote
   }
 
-  get commentTemplate{
+  get commentTemplate(){
     return `
     <div class="row">
     <div class="col-12 card border-dark">${this.body}</div>
