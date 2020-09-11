@@ -1,20 +1,40 @@
 import { ProxyState } from "../AppState.js";
-import { valuesService } from "../Services/ValuesService.js";
+import { AuthService } from "../Services/AuthService.js";
+import { PostService } from "../Services/PostService.js";
 
 //Private
-function _draw() {
-  let values = ProxyState.values;
-  console.log(values);
+function _drawPosts() {
+  let template = "";
+  ProxyState.posts.forEach((p) => (template += p.postTemplate));
+  document.getElementById("posts").innerHTML = template;
 }
-
 //Public
-export default class ValuesController {
+export default class PostController {
   constructor() {
-    ProxyState.on("values", _draw);
+    AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, () => {
+      ProxyState.on("todos", _drawPosts);
+    })
   }
 
-  addValue() {
-    valuesService.addValue()
+  addPost(e) {
+    e.preventDefault();
+    let form = e.target
+    let newPost = {
+      description: form.post.value,
+    };
+    form.reset();
+    try {
+      PostService.addPost(newPost);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
+  removePost(id) {
+    try {
+      PostService.removePost(id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
