@@ -9,8 +9,11 @@ export class CommentsController extends BaseController {
       .get("", this.getAllComments)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .post("", this.create);
+      .post("", this.create)
+      .put("/:id", this.editComment)
+      .delete("/:id", this.deleteCommentbyId)
   }
+  
   async getAllComments(req, res, next) {
     try {
       let comments = await commentsService.find(req.query)
@@ -28,4 +31,25 @@ export class CommentsController extends BaseController {
       next(error);
     }
   }
+async editComment(req, res, next){
+  try {
+    req.body.creatorEmail = req.userInfo.email;
+    let updatedPost = await commentsService.editComment(req.body)
+    res.send(updatedPost)
+  } catch (error) {
+    next(error)
+  }
+}
+
+async deleteCommentbyId(req, res, next) {
+  try {
+    req.body.id = req.params.id
+    req.body.creatorEmail = req.userInfo.email;
+    await commentsService.deleteComment(req.params.id, req.userInfo.email)
+    res.send("Successfully Delorted")
+  } catch (error) {
+    next(error)
+  }
+}
+
 }
