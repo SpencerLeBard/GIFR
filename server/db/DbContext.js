@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
-import ValueSchema from "../models/Value";
+import CommentSchema from "../models/Comment";
+import PostSchema from "../models/Post";
 import ProfileSchema from "../models/Profile";
 
 class DbContext {
-  Values = mongoose.model("Value", ValueSchema);
+  Posts = mongoose.model("Post", PostSchema)
+  Comments = mongoose.model("Comment", CommentSchema)
   Profile = mongoose.model("Profile", ProfileSchema);
 }
 
