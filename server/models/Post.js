@@ -1,20 +1,22 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const Value = new Schema(
+const Post = new Schema(
   {
     title: { type: String, required: true },
-    description: { type: String, required: true },
+    authorImg: { type: String, required: true, default: "http://placehold.it/100x100" },
+    author: { type: String, required: true },
+    body: { type: String, required: true },
+    tags: { type: String },
     creatorEmail: { type: String, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );
-
-Value.virtual("creator", {
+Post.virtual("creator", {
   localField: "creatorEmail",
   ref: "Profile",
   foreignField: "email",
   justOne: true
 });
 
-export default Value;
+export default Post 
