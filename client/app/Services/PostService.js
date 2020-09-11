@@ -12,9 +12,12 @@ class PostService {
   }
 
   async addPost(post) {
-    let res = await api.post(url, post)
+    let res = await api.post(url, post);
+    ProxyState.posts = [...ProxyState.posts, new Post(res.data)];
   }
+
+  async removePost()
 
 }
 
-export const valuesService = new PostService();
+export const postService = new PostService();
