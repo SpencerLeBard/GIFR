@@ -29,7 +29,11 @@ export default class PostsController {
     e.preventDefault();
     let form = e.target
     let newPost = {
-      description: form.post.value,
+      title: form.inputTitle.value,
+      body: form.inputBody.value,
+      creatorEmail: ProxyState.profile.email,
+      authorImg: ProxyState.profile.picture,
+      author: ProxyState.profile.name
     };
     form.reset();
     try {

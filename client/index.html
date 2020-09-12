@@ -35,20 +35,20 @@
         </nav>
     </header>
     <main class="container">
-        <div class="row my-3 justify-content-end card">
-            <form onsubmit="app.postsController.addPost(event)">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">Post Title</label>
-                        <input type="text" class="form-control" id="input-title" placeholder="Title ...">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Post Details </label>
-                        <input type="text" class="form-control" id="input-body" placeholder="Post Details ...">
-                        <button type="submit" class="btn btn-primary" id="create-post">Post</button>
-                    </div>
-                </div>
-            </form>
+        <div class="row my-3 justify-content-end">
+                    <form onsubmit="app.postsController.addPost(event)">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inpuTitle">Post Title</label>
+                                <input type="text" class="form-control" id="inputTitle" name="inputTitle" placeholder="Title ...">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputBody">Post Details </label>
+                                <input type="text" class="form-control" id="inputBody" name="inputBody" placeholder="Post Details ...">
+                                <button type="submit" class="btn btn-primary" id="create-post">Post</button>
+                            </div>
+                        </div>
+                    </form>
         </div>
         <div class="row" id="posts">
         </div>
@@ -60,7 +60,7 @@
             </div>
         </div>
     </footer>
-
+    <script src='https://kit.fontawesome.com/d2e00f75e8.js' crossorigin='anonymous'></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.11/auth0-spa-js.production.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/AuthProvider.browser.js"></script>
