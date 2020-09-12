@@ -19,7 +19,9 @@ export default class Post {
       </div>
   </div>
   <div class="col-9 card">
-      <div class="card-title p-2">${this.title}
+      <div class="card-title p-2">
+      <h3>${this.title}</h3>
+      <span> <i class="fa fa-times-circle-o" aria-hidden="true" role="button" onclick="app.postsController.removePost('${this.id}')"></i> </span>
           <div class="card-body border-top"> 
           ${this.body}
           </div>

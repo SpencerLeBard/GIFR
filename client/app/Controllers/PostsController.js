@@ -26,7 +26,6 @@ export default class PostsController {
   }
 
   addPost(e) {
-    debugger
     e.preventDefault();
     let form = e.target
     let newPost = {
