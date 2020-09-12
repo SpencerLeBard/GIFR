@@ -12,12 +12,11 @@ export default class Post {
     return `
   <div class="container container-fluid d-flex mb-3 shadow rounded p-0">
   <div class="col-3 card">
-      <div class="card-img p-2 " id="avatar"> <img class="image-circle" src="${this.authorImg}" alt="">
-          <div class="d-flex align-items-center" id="usernameArea"> 
+      <div class="card-img p-2 " id="avatar"> 
+        <img class="image-circle" src="${this.authorImg}" alt="">
+        <div class="mt-3" id="usernameArea"> 
           <p><b>${this.author}</b></p>
-          </div>
-          <div class="d-flex align-items-center" id="usernameArea">
-          </div>
+        </div>
       </div>
   </div>
   <div class="col-9 card">
