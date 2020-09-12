@@ -27,16 +27,18 @@ export default class Post {
       <div class="card-body border-top mb-1"> 
           ${this.body}
       </div>
+
       <div class="pb-1">
-      <form onsubmit="app.commentsController.addComment()">
+      <form onsubmit="app.commentsController.addComment(event,'${this.id}')>
             <input type="text" id="comment" name="comment" placeholder="Your Comment...">
             <button class="btn btn-danger" type="submit">Add Comment</button>
       </form>
+
+      <h1 onclick="app.commentsController.drawCommentsForPost('${this.id}')">comment</h1>
+      <div name="commentsSection" id="${this.id}">
       </div>
   </div>
-  <div name="commentsSection" id="${this.id}">
-
-  </div>
+  
   </div>
   `
   }
