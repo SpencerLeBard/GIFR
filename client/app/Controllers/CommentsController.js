@@ -7,7 +7,8 @@ function _drawComments() {
   let template = "";
   ProxyState.comments.forEach((p) => template += p.commentTemplate);
   document.getElementById(`${this.post}`).innerHTML = template;
-} export default class CommentsController {
+}
+ export default class CommentsController {
   constructor() {
     this.getComments()
     AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, () => {
