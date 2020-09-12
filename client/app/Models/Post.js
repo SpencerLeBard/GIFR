@@ -26,11 +26,13 @@ export default class Post {
           ${this.body}
           </div>
       </div>
+      <div id="comments"></div>
   </div>
   <form onsubmit="app.commentsController.addComment()">
             <input type="text" id="comment" name="comment" placeholder="Your Comment...">
             <button type="submit">Add Comment</button>
   </form>
+
 </div>`
   }
 }

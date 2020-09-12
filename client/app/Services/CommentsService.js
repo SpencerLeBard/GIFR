@@ -3,11 +3,12 @@ import Comment from "../Models/Comment.js";
 import { api } from "./AxiosService.js";
 
 let url = "/comments";
+let postUrl = "posts/"
 
 class CommentsService {
 
-  async getComments() {
-    let res = await api.get(url);
+  async getComments(id) {
+    let res = await api.get(postUrl + id);
     ProxyState.comments = res.data.map((c) => new Comment(c));
   }
 
@@ -25,6 +26,14 @@ class CommentsService {
     ProxyState.comments.splice(index, 1);
     ProxyState.comments = ProxyState.comments;
   }
+
+  // async upvote() {
+
+  // }
+
+  // async downvote() {
+
+  // }
 
 }
 

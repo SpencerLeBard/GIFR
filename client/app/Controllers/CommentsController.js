@@ -2,13 +2,12 @@ import { ProxyState } from "../AppState.js";
 import { AuthService } from "../Services/AuthService.js";
 import { commentsService } from "../Services/CommentsService.js";
 
-//Private
 function _drawComments() {
     let template = "";
-    ProxyState.comments.forEach((p) => (template += p.commentTemplate));
+    ProxyState.comments.forEach((p) => template += p.commentTemplate);
     document.getElementById("comments").innerHTML = template;
 }
-//Public
+
 export default class CommentsController {
     constructor() {
         this.getAllComments()
@@ -17,6 +16,7 @@ export default class CommentsController {
         })
     }
 
+    //needs to call all comments belonging to current post
     getAllComments() {
         try {
             commentsService.getAllComments();
@@ -25,6 +25,7 @@ export default class CommentsController {
         }
     }
 
+    //needs to add comment to current post
     addComment(e) {
         e.preventDefault();
         let form = e.target
@@ -39,6 +40,7 @@ export default class CommentsController {
         }
     }
 
+    //needs to delete from current post
     removeComment(id) {
         try {
             commentsService.removeComment(id);
@@ -46,4 +48,20 @@ export default class CommentsController {
             console.error(error);
         }
     }
+
+    // upvote(id) {
+    //     try {
+    //         commentsService.upvote(id);
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+    // }
+
+    // downvote(id) {
+    //     try {
+    //         commentsService.downvote(id);
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+    // }
 }
