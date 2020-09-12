@@ -2,7 +2,7 @@ import { ProxyState } from "../AppState.js";
 import Post from "../Models/Post.js";
 import { api } from "./AxiosService.js";
 
-let url = "/posts";
+let url = "/posts/";
 
 class PostsService {
   async getAllPosts() {
@@ -17,7 +17,7 @@ class PostsService {
   }
 
   async removePost(id) {
-    let res = await api.delete(`${url}/${id}`);
+    let res = await api.delete(`/posts/${id}`);
     let index = ProxyState.posts.findIndex((p) => p.id == id)
     if (index == -1) {
       throw new Error("Invalid Id");
