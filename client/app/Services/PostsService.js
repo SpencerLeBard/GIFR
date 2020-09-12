@@ -2,7 +2,7 @@ import { ProxyState } from "../AppState.js";
 import Post from "../Models/Post.js";
 import { api } from "./AxiosService.js";
 
-let url = "/posts/";
+let url = "/posts";
 
 class PostsService {
   async getAllPosts() {
