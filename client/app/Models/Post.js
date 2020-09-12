@@ -10,6 +10,7 @@ export default class Post {
   }
   get postTemplate() {
     return `
+  <div class="container d-flex mb-3">
   <div class="col-3 card">
       <div class="card-img p-2" id="avatar"> <img src="${this.authorImg}" alt="">
           <div class="d-flex align-items-center" id="usernameArea"> ${this.author}
@@ -20,16 +21,20 @@ export default class Post {
   </div>
   <div class="col-9 card">
       <div class="card-title p-2">
-      <h3>${this.title}</h3>
-      <span> <i class="fa fa-times-circle-o" aria-hidden="true" role="button" onclick="app.postsController.removePost('${this.id}')"></i> </span>
-          <div class="card-body border-top"> 
-          ${this.body}
-          </div>
-          <form onsubmit="app.commentsController.addComment()">
-            <input type="text" id="inputBody" name="inputBody" placeholder="Your Comment...">
-            <button type="submit">Add Comment</button>
-  </form>
+        <h3>${this.title}</h3>
+        <span> <i class="fa fa-times-circle-o" aria-hidden="true" role="button" onclick="app.postsController.removePost('${this.id}')"></i> </span>
       </div>
+      <div class="card-body border-top"> 
+          ${this.body}
+      </div>
+      <form onsubmit="app.commentsController.addComment()">
+            <input type="text" id="comment" name="comment" placeholder="Your Comment...">
+            <button type="submit">Add Comment</button>
+      </form>
+  </div>
+  <div name="commentsSection" id="${this.id}">
+
+  </div>
   </div>
   `
   }
