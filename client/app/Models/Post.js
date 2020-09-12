@@ -25,6 +25,10 @@ export default class Post {
           <div class="card-body border-top"> 
           ${this.body}
           </div>
+          <form onsubmit="app.commentsController.addComment()">
+            <input type="text" id="inputBody" name="inputBody" placeholder="Your Comment...">
+            <button type="submit">Add Comment</button>
+  </form>
       </div>
   </div>
   `

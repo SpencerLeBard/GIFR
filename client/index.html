@@ -36,19 +36,21 @@
     </header>
     <main class="container">
         <div class="row my-3 justify-content-end">
-                    <form onsubmit="app.postsController.addPost(event)">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inpuTitle">Post Title</label>
-                                <input type="text" class="form-control" id="inputTitle" name="inputTitle" placeholder="Title ...">
-                            </div>
-                            <div class="form-group">
-                                <label for="inputBody">Post Details </label>
-                                <input type="text" class="form-control" id="inputBody" name="inputBody" placeholder="Post Details ...">
-                                <button type="submit" class="btn btn-primary" id="create-post">Post</button>
-                            </div>
-                        </div>
-                    </form>
+            <form onsubmit="app.postsController.addPost(event)">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inpuTitle">Post Title</label>
+                        <input type="text" class="form-control" id="inputTitle" name="inputTitle"
+                            placeholder="Title ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputBody">Post Details </label>
+                        <input type="text" class="form-control" id="inputBody" name="inputBody"
+                            placeholder="Post Details ...">
+                        <button type="submit" class="btn btn-primary" id="create-post">Post</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="row" id="posts">
         </div>
