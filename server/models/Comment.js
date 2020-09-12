@@ -6,7 +6,7 @@ const Comment = new Schema(
   {
     creatorEmail: { type: String, required: true },
     body: { type: String, required: true },
-    post: { type: ObjectId, ref: "Post" },
+    post: { type: ObjectId, ref: "Post", required: true},
     author: { type: String, required: true},
     vote: { type: Number, default: 0 } 
 
