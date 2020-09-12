@@ -10,7 +10,7 @@ export default class Comment {
   get commentTemplate() {
     return `
     <div class="col-12 card border-dark">${this.body}
-    <h1 onclick="app.commentsController.deleteComment('${this.id}')">delort</h1>
+    <h5 onclick="app.commentsController.deleteComment('${this.id}')">x</h5>
     </div>
   `
   }

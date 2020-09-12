@@ -10,7 +10,8 @@ export default class Post {
   }
   get postTemplate() {
     return `
-  <div class="container container-fluid d-flex mb-3 shadow rounded p-0">
+    <div class="">
+  <div class="mb-3 rounded p-0 d-flex">
   <div class="col-3 card">
       <div class="card-img p-2 " id="avatar"> 
         <img class="image-circle" src="${this.authorImg}" alt="">
@@ -27,19 +28,19 @@ export default class Post {
       <div class="card-body border-top mb-1"> 
           ${this.body}
       </div>
-
       <div class="pb-1">
-      <form onsubmit="app.commentsController.addComment(event,'${this.id}')>
-            <input type="text" id="comment" name="comment" placeholder="Your Comment...">
+      <form onsubmit="app.commentsController.addComment(event,'${this.id}')">
+      <label for="comment"></label>
+            <input type="text" id="comment" name="comment" placeholder="Your Comment..."></input>
             <button class="btn btn-danger" type="submit">Add Comment</button>
       </form>
-
       <h1 onclick="app.commentsController.drawCommentsForPost('${this.id}')">comment</h1>
       <div name="commentsSection" id="${this.id}">
       </div>
   </div>
-  
+  </div>
   </div>
   `
+  
   }
 }
