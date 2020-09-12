@@ -11,7 +11,7 @@ export default class Post {
   get postTemplate() {
 
     return `
-  <div class="row">
+<div class="row">
   <div class="col-3 card">
       <div class="card-img p-2" id="avatar"> <img src="${this.authorImg}" alt="">
           <div class="d-flex align-items-center" id="usernameArea"> ${this.author}
@@ -27,6 +27,10 @@ export default class Post {
           </div>
       </div>
   </div>
+  <form onsubmit="app.commentsController.addComment()">
+            <input type="text" id="comment" name="comment" placeholder="Your Comment...">
+            <button type="submit">Add Comment</button>
+  </form>
 </div>`
   }
 }
