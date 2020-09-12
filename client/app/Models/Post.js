@@ -10,27 +10,30 @@ export default class Post {
   }
   get postTemplate() {
     return `
-  <div class="container d-flex mb-3">
+  <div class="container container-fluid d-flex mb-3 shadow rounded p-0">
   <div class="col-3 card">
-      <div class="card-img p-2" id="avatar"> <img src="${this.authorImg}" alt="">
-          <div class="d-flex align-items-center" id="usernameArea"> ${this.author}
-          </div>
-          <div class="d-flex align-items-center" id="usernameArea"> score
-          </div>
+      <div class="card-img p-2 " id="avatar"> 
+        <img class="image-circle" src="${this.authorImg}" alt="">
+        <div class="mt-3" id="usernameArea"> 
+          <p><b>${this.author}</b></p>
+        </div>
       </div>
   </div>
   <div class="col-9 card">
-      <div class="card-title p-2">
+      <div class="card-title p-2 d-flex justify-content-between">
         <h3>${this.title}</h3>
-        <span> <i class="fa fa-times-circle-o" aria-hidden="true" role="button" onclick="app.postsController.removePost('${this.id}')"></i> </span>
+        <span> <i class="fa fa-times-circle-o hover-red" aria-hidden="true" role="button" onclick="app.postsController.removePost('${this.id}')"></i> </span>
       </div>
-      <div class="card-body border-top"> 
+      <div class="card-body border-top mb-1"> 
           ${this.body}
       </div>
-      <form onsubmit="app.commentsController.addComment(event,'${this.id}')">
+
+      <div class="pb-1">
+      <form onsubmit="app.commentsController.addComment(event,'${this.id}')>
             <input type="text" id="comment" name="comment" placeholder="Your Comment...">
-            <button type="submit">Add Comment</button>
+            <button class="btn btn-danger" type="submit">Add Comment</button>
       </form>
+
       <h1 onclick="app.commentsController.drawCommentsForPost('${this.id}')">comment</h1>
       <div name="commentsSection" id="${this.id}">
       </div>
