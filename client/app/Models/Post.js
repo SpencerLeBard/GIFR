@@ -19,7 +19,7 @@ export default class Post {
       </div>
   </div>
   <div class="col-9 card">
-      <div class="card-title p-2">title
+      <div class="card-title p-2">${this.title}
           <div class="card-body border-top"> 
           ${this.body}
           </div>
