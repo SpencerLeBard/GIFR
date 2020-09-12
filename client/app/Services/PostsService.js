@@ -8,7 +8,6 @@ class PostsService {
   async getAllPosts() {
     let res = await api.get(url);
     ProxyState.posts = res.data.map((p) => new Post(p));
-    console.log(res);
   }
 
   async addPost(post) {

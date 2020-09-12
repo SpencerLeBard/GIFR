@@ -2,33 +2,38 @@ import { ProxyState } from "../AppState.js";
 import { AuthService } from "../Services/AuthService.js";
 import { commentsService } from "../Services/CommentsService.js";
 
+let activePostId = ""
 
-function _drawComments() {
+function _draw(){
   let template = "";
   ProxyState.comments.forEach((p) => template += p.commentTemplate);
-  document.getElementById(`${this.post}`).innerHTML = template;
+  document.getElementById(activePostId).innerHTML = template;
 }
+
  export default class CommentsController {
   constructor() {
-    this.getComments()
     AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, () => {
-      ProxyState.on("comments", _drawComments);
     })
+    ProxyState.on("comments", _draw )
   }    //needs to call all comments belonging to current post
-  getComments() {
+  drawCommentsForPost(id) {
     try {
-      commentsService.getComments();
+      activePostId = id
+      commentsService.getComments(id);
     } catch (error) {
       console.error(error);
     }
+
   }    //needs to add comment to current post
-  addComment(e) {
+  addComment(e, id) {
+    let postId = id
     e.preventDefault();
     let form = e.target
     let newComment = {
-      body: form.inputBody.value,
+      body: form.comment.value,
       creatorEmail: ProxyState.profile.email,
-      author: ProxyState.profile.name
+      author: ProxyState.profile.name,
+      post: postId
     };
     form.reset();
     try {
@@ -37,7 +42,7 @@ function _drawComments() {
       console.error(error);
     }
   }    //needs to delete from current post
-  removeComment(id) {
+  deleteComment(id) {
     try {
       commentsService.removeComment(id);
     } catch (error) {
