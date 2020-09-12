@@ -17,9 +17,9 @@ export default class CommentsController {
     }
 
     //needs to call all comments belonging to current post
-    getAllComments() {
+    getComments() {
         try {
-            commentsService.getAllComments();
+            commentsService.getComments();
         } catch (error) {
             console.error(error);
         }
