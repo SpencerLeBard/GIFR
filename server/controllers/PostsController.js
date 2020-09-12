@@ -2,19 +2,21 @@ import express from "express";
 import BaseController from "../utils/BaseController";
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { postsService } from "../services/PostsService";
+import { commentsService } from "../services/CommentsService";
 
 export class PostsController extends BaseController {
     constructor() {
         super('api/posts');
         this.router
             .get("", this.getAllPosts)
+            .get("/:id/comments", this.getCommentsByPostId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .get("/user", this.getUserPosts)
             .put("/:id", this.editPost)
             .post("", this.createPost)
             .delete("/:id", this.deletePost)
     }
-
+  
     async getAllPosts(req, res, next) {
         try {
             let posts = await postsService.getAllPosts(req.query)
@@ -32,6 +34,15 @@ export class PostsController extends BaseController {
             next(error)
         }
     }
+    async getCommentsByPostId(req, res, next) {
+        try {
+            let commentsById = await commentsService.find({post : req.params.id})
+            res.send(commentsById)
+        } catch (error) {
+            next(error)
+        }
+    }
+
 
     async createPost(req, res, next) {
         try {

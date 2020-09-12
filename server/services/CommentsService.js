@@ -1,9 +1,7 @@
 import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
-class CommentsService {
-  
-  
+class CommentsService {  
   async find(query={}) {
     let comments = await dbContext.Comments.find(query);
     return comments;
