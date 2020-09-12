@@ -10,7 +10,7 @@ function _drawComments() {
 
 export default class CommentsController {
     constructor() {
-        this.getAllComments()
+        this.getComments()
         AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, () => {
             ProxyState.on("comments", _drawComments);
         })

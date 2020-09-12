@@ -10,7 +10,7 @@ class AppState extends EventEmitter {
   values = []
   /** @type {Post[]} */
   posts = [new Post({ title: "Test", authorImg: "https://placehold.it/100x100", author: "testy testington", body: "Test", creatorEmail: "test@test.com", id: "123test" })]
-  comments = []
+  comments = [new Comment({ creatorEmail: "test", body: "stuff here", post: "objectId goes here", author: "who did this here", id: "blehblehbleh" })]
 }
 
 
